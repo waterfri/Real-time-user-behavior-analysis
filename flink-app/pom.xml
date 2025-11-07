@@ -1,6 +1,6 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>com.example</version>
+  <groupId>com.example</groupId>
   <artifactId>realtime-user-behavior</artifactId>
   <version>1.0-SNAPSHOT</version>
 
@@ -14,7 +14,7 @@
     <dependency>
       <groupId>org.apache.flink</groupId>
       <artifactId>flink-streaming-java</artifactId>
-      <versiion>${flink.version}</version>
+      <version>${flink.version}</version>
       <scope>provided</scope>
     </dependency>
 
@@ -22,16 +22,9 @@
     <dependency>
       <groupId>org.apache.flink</groupId>
       <artifactId>flink-connector-kafka</artifactId>
-      <version>3.2.0-1.18</version>
+      <version>3.1.0-1.18</version>
     </dependency>
-
-    <!-- 基础序列化依赖 -->
-    <dependency>
-      <groupId>org.apache.flink</groupId>
-      <artifactId>flink-connector-base</artifactId>
-      <version>3.2.0-1.18</version>
-    </dependency>
-  <dependencies>
+  </dependencies>
   
   <!-- 构建打包成可上传的jar文件 -->
   <build>
