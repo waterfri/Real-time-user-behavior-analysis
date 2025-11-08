@@ -25,6 +25,7 @@ public class ReadKafkaPrint{
                 .setTopics(topic)
                 .setGroupId(groupId)
                 .setStartingOffsets(OffsetsInitializer.earliest())
+                .setValueOnlyDeserializer(new SimpleStringSchema()) // 反序列化器
                 .build();
 
         // 3) Build stream and print raw JSON
