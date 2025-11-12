@@ -24,6 +24,13 @@
       <artifactId>flink-connector-kafka</artifactId>
       <version>3.1.0-1.18</version>
     </dependency>
+
+    <!-- JSON解析依赖 -->
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-databind</artifactId>
+      <version>2.17.2</version>
+    </dependency>
   </dependencies>
   
   <!-- 构建打包成可上传的jar文件 -->
