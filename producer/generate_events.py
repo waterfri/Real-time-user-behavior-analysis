@@ -9,7 +9,7 @@ fake = Faker()
 
 producer = KafkaProducer(
     bootstrap_servers=['localhost:9093'], # 连接到宿主机 Kafka
-    value_serializer=lambda v: json.dumps(v).encode('utf-8')
+    value_serializer=lambda v: json.dumps(v).encode('utf-8') # 序列化
 )
 
 events_types = ["page_view", "click", "purchase", "add_to_cart"]

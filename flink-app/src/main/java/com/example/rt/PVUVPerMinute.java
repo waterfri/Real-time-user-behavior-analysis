@@ -12,6 +12,7 @@ import org.apache.flink.connector.kafka.source.KafkaSource;
 import org.apache.flink.connector.kafka.source.enumerator.initializer.OffsetsInitializer;
 import org.apache.flink.connector.kafka.sink.KafkaRecordSerializationSchema;
 import org.apache.flink.connector.kafka.sink.KafkaSink;
+import org.apache.flink.connector.base.DeliveryGuarantee;
 
 import org.apache.flink.streaming.api.datastream.AllWindowedStream;
 import org.apache.flink.streaming.api.datastream.DataStreamSource;
@@ -22,6 +23,7 @@ import org.apache.flink.streaming.api.windowing.time.Time;
 import org.apache.flink.streaming.api.windowing.windows.TimeWindow;
 import org.apache.flink.util.Collector;
 
+import java.nio.charset.StandardCharsets;
 import java.time.Duration;
 import java.time.Instant;
 import java.time.format.DateTimeParseException;
@@ -132,6 +134,22 @@ public class PVUVPerMinute{
                     out.collect(resultJson);
                 }
             });
+
+        // 4. write window results to Kafka topic "events_clean"
+        KafkaSink<String> sink = KafkaSink.<String>builder()
+            .setBootstrapServers("kafka:9092")
+            .setRecordSerializer(
+                KafkaRecordSerializationSchema.builder()
+                    .setTopic(outTopic)
+                    .setValueSerializationSchema(
+                        (String v) -> v.getBytes(StandardCharsets.UTF_8))
+                    .build()   
+            )
+            .setDeliverGuarantee(DeliveryGuarantee.AT_LEAST_ONCE)
+            .build();
+
+        // sink
+        result.sinkTo(sink);
 
         // print to console
         result.print();

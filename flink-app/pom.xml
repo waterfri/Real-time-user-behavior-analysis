@@ -1,11 +1,12 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.example</groupId>
   <artifactId>realtime-user-behavior</artifactId>
   <version>1.0-SNAPSHOT</version>
 
   <properties>
-    <flink.version>1.18.1</flink.version>
+    <flink.version>1.18.0</flink.version>
     <java.version>17</java.version>
   </properties>
 
@@ -14,7 +15,7 @@
     <dependency>
       <groupId>org.apache.flink</groupId>
       <artifactId>flink-streaming-java</artifactId>
-      <version>${flink.version}</version>
+      <version>1.18.0</version>
       <scope>provided</scope>
     </dependency>
 
@@ -23,6 +24,12 @@
       <groupId>org.apache.flink</groupId>
       <artifactId>flink-connector-kafka</artifactId>
       <version>3.1.0-1.18</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.apache.flink</groupId>
+      <artifactId>flink-connector-base</artifactId>
+      <version>1.18.0</version>
     </dependency>
 
     <!-- JSON解析依赖 -->
@@ -66,4 +73,5 @@
       </plugin>
     </plugins>
   </build>
+
 </project>
